@@ -27,7 +27,7 @@ body {
   overflow-y: hidden;
   white-space: nowrap;
   user-select: none;
-  cursor: pointer;
+  cursor: grab;
   transition: all 0.2s;
   transform: scale(0.98);
   will-change: transform;
@@ -66,4 +66,4 @@ body {
 .item:nth-child(9n+9) { background: rebeccapurple;}
 
 .item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
-.item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
+.item:nth
