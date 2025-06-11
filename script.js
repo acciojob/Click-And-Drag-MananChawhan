@@ -1,29 +1,29 @@
-const slider = document.querySelector('.items');
-let isDown = false;
+const container = document.querySelector('.items');
+let isDragging = false;
 let startX;
-let scrollLeft;
+let initialScrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
+container.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  container.classList.add('active');
+  startX = e.pageX - container.offsetLeft;
+  initialScrollLeft = container.scrollLeft;
 });
 
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('active');
+container.addEventListener('mouseleave', () => {
+  isDragging = false;
+  container.classList.remove('active');
 });
 
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('active');
+container.addEventListener('mouseup', () => {
+  isDragging = false;
+  container.classList.remove('active');
 });
 
-slider.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
+container.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
   e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.5; // control scroll speed
-  slider.scrollLeft = scrollLeft - walk;
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - startX) * 1.5; // Sensitivity factor
+  container.scrollLeft = initialScrollLeft - walk;
 });
